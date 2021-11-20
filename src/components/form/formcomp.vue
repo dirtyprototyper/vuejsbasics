@@ -11,7 +11,7 @@
       action="https://vuejs.org/"
       method="post"
     > -->
-    <form id="appform" @submit.prevent="checkForm">
+    <form @submit.prevent="checkForm">
       <!-- <p v-if="errors.length">
         <b>Please correct the following error(s):</b>
         <ul>

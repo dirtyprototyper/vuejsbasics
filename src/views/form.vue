@@ -30,9 +30,13 @@
     <br />
     the count number is:{{ count }}
   </div>
+
+  <br />
+  <div>Testing Data store: {{ friend }}</div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 //Note! do not put curly braces for the component that you are importing
 import DisplaytheData from "../components/form/display.vue";
 import formcomps from "../components/form/formcomp.vue";
@@ -55,6 +59,7 @@ export default {
     count() {
       return store.state.count;
     },
+    ...mapState(["friend"]),
   },
   methods: {
     userChange(e) {
