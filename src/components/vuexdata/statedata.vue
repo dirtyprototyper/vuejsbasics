@@ -1,5 +1,6 @@
 <template>
   <!--vue state, counter -->
+  number mutations. Using map mutation
   <div style="border: 1px solid black">
     <p>Normal Counter:{{ count }}</p>
     <p>With Counter with Getters :{{ doublecounter }}</p>
@@ -11,6 +12,8 @@
   <br />
   <br />
 
+  Using method to update friends friend value | Proper binding and changing of
+  state in data store for array of objects
   <div style="border: 1px solid black; margin-top 2%">
     <span>
       The input hardcode to the state (array of object's friends friend).
@@ -80,8 +83,9 @@
   <br />
   <br />
 
-  cart with drinkitem and fooditem. Showcasing how to have item in
-  store.js(drinkitem) and without it(fooditem) existing.
+  cart with drinkitem and fooditem. <br />
+  Showcasing how to have item in store.js(drinkitem) and without it(fooditem)
+  existing.
   <div style="border: 1px solid black">
     {{ cart }}
     <br />
@@ -96,10 +100,36 @@
 
     <button @click="additem2">add</button>
   </div>
+  <br />
+  <br />
+
+  vuex actions with numbers
+  <div style="border: 1px solid black">
+    {{ distance }}
+    <br />
+    instead of mutation which as sync<br />
+    <button @click="distanceincrement">+1</button>
+    <button @click="distancedecrement">-1</button>
+    <br />
+
+    use Actions instead as they are async <br />
+    <button @click="travelforward">+1</button>
+    <button @click="travelbackward">+1</button>
+  </div>
+
+  vuex actions with string and object
+  <div style="border: 1px 1px solid black">
+    {{ locations }}
+
+    <br />
+    alocation: {{ alocation }}
+    <input v-model="alocation" type="string" />
+    <button @click="addlocation">save</button>
+  </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import { store } from "../../store/store.js";
 import { mapMutations } from "vuex";
 
@@ -110,6 +140,7 @@ export default {
   data() {
     return {
       fooditem: null,
+      // alocation: null,
     };
   },
 
@@ -164,6 +195,24 @@ export default {
         return store.state.cart;
       },
     },
+
+    //for action
+    distance: {
+      get() {
+        return store.state.distance;
+      },
+    },
+
+    ...mapState(["locations"]),
+    alocation: {
+      get() {
+        return store.state.alocation;
+      },
+
+      set(value) {
+        store.state.alocation = value;
+      },
+    },
   },
 
   methods: {
@@ -199,6 +248,28 @@ export default {
     // decrements() {
     //   store.commit("decrement");
     // },
+
+    /* For actions */
+    ...mapMutations(["distanceincrement"]),
+    ...mapMutations(["distancedecrement"]),
+    ...mapActions(["travelforward"]),
+    ...mapActions(["travelbackward"]),
+
+    // ...mapActions({ addlocation2: "addlocation2", mylocation: location }),
+
+    //if you need mapping.. if not, just use normal mapping for action
+    ...mapActions({ addlocation2: "addlocation2" }),
+
+    //@click invoked the following
+    addlocation() {
+      //calls the action in store.js
+      this.addlocation2(this.alocation);
+    },
+
+    // addlocation() {
+    //   console.log(this.location),
+    //       ...mapActions(['addlocation',this.location])
+    //   },
   },
 
   // actions: {},

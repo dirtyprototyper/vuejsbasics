@@ -39,6 +39,11 @@ export const store = new Vuex.Store({
 
     // age: "",
     // type: "",
+
+    distance: 0,
+    alocation: "somestuff",
+
+    locations: [],
   },
 
   getters: {
@@ -53,6 +58,7 @@ export const store = new Vuex.Store({
     },
   },
 
+  //mutations have to be synchronous: task performed one at a time
   mutations: {
     increment: (state) => state.count++,
     decrement: (state) => state.count--,
@@ -78,6 +84,49 @@ export const store = new Vuex.Store({
       state.cart.push(theitem.theitem);
 
       // console.log(state.cart);
+    },
+
+    //another mutation for numbers, but using actions
+    travelforward(state) {
+      state.distance++;
+    },
+    travelbackward(state) {
+      state.distance--;
+    },
+
+    distanceincrement: (state) => {
+      console.log("distance increse"), state.distance++;
+    },
+    distancedecrement: (state) => state.distance--,
+
+    //string and objcets
+    addlocation: (state, place) => {
+      console.log(place);
+      state.locations.push(place);
+    },
+
+    //another mutation for strings, but using acitons
+  },
+
+  //asynchronous:deal with multiple task at a time
+  actions: {
+    travelforward(context) {
+      context.commit("travelforward");
+
+      //other possible
+      //comntext.state
+      //context.getters
+      //context.dispatch
+    },
+
+    travelbackward(context) {
+      context.commit("travelbackward");
+    },
+
+    //for string and object
+    addlocation2(context, mylocation) {
+      //call the method and pass the item over.
+      context.commit("addlocation", mylocation);
     },
   },
 });
