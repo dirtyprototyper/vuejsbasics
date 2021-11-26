@@ -29,33 +29,38 @@ export const store = new Vuex.Store({
     count: 0,
 
     friends: [
-      { friend: "tom", age: 12, type: "primary" },
-      { friend: "dick", age: 13, type: "secondary" },
+      { friend: "tom", age: 12, type: "Primary" },
+      { friend: "dick", age: 13, type: "Secondary" },
     ],
 
     cart: ["apple", "orange", "pear"],
-    cartitem: "add something",
+    drinkitem: "drinkitem",
+    // fooditem: "fooditem",
+
     // age: "",
     // type: "",
   },
 
   getters: {
+    //this filters all the friends that were met in primary
     doneTodos: (state) => {
-      return state.friends.filter((x) => x.type == "primary");
+      return state.friends.filter((x) => x.type == "Primary");
     },
 
+    //this double the count by 2.
     doubleCount: (state) => {
       return state.count * 2;
     },
   },
-  /* yet to figure out how this really works
-  getters: {
-    },
-  },
-*/
+
   mutations: {
     increment: (state) => state.count++,
     decrement: (state) => state.count--,
+
+    adddrink: (state) => {
+      console.log(state);
+      console.log(state.drinkitem);
+    },
 
     //state,payload only.
     //https://next.vuex.vuejs.org/guide/mutations.html#object-style-commit
@@ -65,11 +70,14 @@ export const store = new Vuex.Store({
     },
 
     //for cart
-    savecart: (state, items) => {
-      console.log(items);
-      console.log(state.cartitem);
+    savecart: (state, theitem) => {
+      // console.log("savecart");
+      // // casually logging to show that drinkitem exists in the store.js
+      // console.log(state.drinkitem);
 
-      state.cart.push(items);
+      state.cart.push(theitem.theitem);
+
+      // console.log(state.cart);
     },
   },
 });

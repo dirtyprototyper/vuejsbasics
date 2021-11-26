@@ -7,9 +7,6 @@
     <button @click="increment">+1</button>
     <button @click="decrements">-1</button>
     <br />
-    <!-- <button @click="increment2">+2</button> -->
-    <!--  <button @click="decrement2">-2</button> -->
-    <button @click="doneTodosCount">-2</button>
   </div>
   <br />
   <br />
@@ -23,10 +20,6 @@
     <div style="border: 1px solid black; margin-top 2%">
       <br />
       <form @submit.prevent="saveData">
-        <!-- <li v-for="(item, index) in friends" :key="item.friend">
-          <input @input="updateValue('friend', index, $event.target.value)" />
-        </li> -->
-
         <label for="friend">Friend Name</label>
         {{ friends.friend }}
         <input
@@ -34,20 +27,6 @@
           type="text"
           name="friend"
         />
-
-        <!-- <p>
-        <label for="age">Age</label>
-        <input id="age" v-model="age" type="number" name="age" min="0" />
-      </p>
-
-      <p>
-        <label for="type">type of friend</label>
-        <select id="type" v-model="type" name="type">
-          <option>Primary</option>
-          <option>secondary</option>
-          <option>Others</option>
-        </select>
-      </p> -->
 
         <p>
           <input disabled type="submit" value="Submit" />
@@ -59,24 +38,32 @@
     <br />
     <br />
 
-    <span> 2 Way Data Binding </span> <br />
+    <span> 2 Way Data Binding for datastore's array of object </span> <br />
     <div style="border: 1px solid black; padding: 2%">
       <!--take note that the key need to be the index, otherwise you cannot bind to v-model as it loses focus after 1 characater-->
       <!-- https://stackoverflow.com/questions/43074144/vue-js-input-field-loses-its-focus-after-entry-of-one-character -->
       <li v-for="(item, index) in friends" :key="index">
-        {{ index }}- {{ item.friend }}
+        Number: {{ index }}.
+        <br />
+        Friend name: {{ item.friend }}
         <!-- <input v-model="item.friend" /> -->
         <input v-model="item.friend" />
-
-        {{ item.age }}
+        <br />
+        Friend Age: {{ item.age }}
         <input v-model="item.age" type="number" />
+        <br />
+        Friend From:
+
         {{ item.type }}
+
         <label for="type">type of friend</label>
         <select v-model="item.type">
           <option>Primary</option>
-          <option>secondary</option>
+          <option>Secondary</option>
           <option>Others</option>
         </select>
+        <br />
+        <br />
       </li>
       <br />
 
@@ -92,11 +79,22 @@
 
   <br />
   <br />
-  cart for actions
+
+  cart with drinkitem and fooditem. Showcasing how to have item in
+  store.js(drinkitem) and without it(fooditem) existing.
   <div style="border: 1px solid black">
     {{ cart }}
-    <input v-model="cartitem" type="string" />
-    <button @click="additem">add</button>
+    <br />
+    <br />
+    drinkitem:{{ drinkitem }}
+    <input v-model="drinkitem" type="string" />
+    <button @click="additem1">add</button>
+
+    <br />
+    fooditem : {{ fooditem }}
+    <input v-model="fooditem" type="string" />
+
+    <button @click="additem2">add</button>
   </div>
 </template>
 
@@ -108,11 +106,29 @@ import { mapMutations } from "vuex";
 export default {
   name: "Statedata",
 
+  //Parse data only, where you do not need it to exist within the data store
+  data() {
+    return {
+      fooditem: null,
+    };
+  },
+
   computed: {
-    //method1:
+    //for it to exist in datastore
+    drinkitem: {
+      get() {
+        return store.state.drinkitem;
+      },
+
+      set(value) {
+        store.state.drinkitem = value;
+      },
+    },
+
+    //method1: To get back values from store.js. This return a read-only.
     ...mapState(["count"]), //use it when there is no need to do any string setting
 
-    //method2:
+    //method2: To get back value from store.js. This returns also a read-only value. It is a short hand of the above.
     //   count() {
     //     return store.state.count;
     //   },
@@ -120,19 +136,21 @@ export default {
     // cannot use mapstate with set. If not there will be warn. Take note: by default, read only, unless there is set
     // ...mapState(["friend"]),
 
-    //commented temp
+    //Eg: if you need to back value and set values from store.js
     friends: {
+      //Get value
       get() {
         return store.state.friends;
       },
 
+      //set value
       set(value) {
-        print(value);
         store.commit("savedata", value);
       },
     },
 
-    //getters
+    // 2 examples for Getters.
+    // You simply return pre-defined stuffs in store.js by calling it
     doneTodosCount() {
       return store.getters.doneTodos;
     },
@@ -140,36 +158,33 @@ export default {
       return store.getters.doubleCount;
     },
 
+    //The following test on action
     cart: {
       get() {
         return store.state.cart;
-      },
-
-      set(val) {
-        store.commit("savecart", val);
-      },
-    },
-
-    cartitem: {
-      get() {
-        return store.state.cartitem;
-      },
-
-      set() {
-        // store.commit("cartitem");
       },
     },
   },
 
   methods: {
+    /*Mutation */
+
+    //this is how to save object to store. Parse the object as payload
     updateValue(index, value) {
       store.commit("savedata", { index, value });
     },
 
-    additem() {
-      console.log(this.cartitem);
-      store.commit("savecart", this.cartitem);
+    //this is how to save simple string to store. Can simply pass the string as payload as well
+    additem1() {
+      store.commit("savecart", { theitem: this.drinkitem });
+      // store.commit("savecart", this.drinkitem );
     },
+
+    additem2() {
+      store.commit("savecart", { theitem: this.fooditem });
+    },
+
+    /*Mapping Mutation*/
 
     //if its the same name. increment (component @click) to increment (in store)
     ...mapMutations(["increment"]),
@@ -188,11 +203,4 @@ export default {
 
   // actions: {},
 };
-
-//https://medium.com/swlh/adding-modules-to-a-vuex-store-8afead95e5af
-//https://blog.logrocket.com/a-complete-guide-to-mapping-in-vuex/
-//https://blog.openreplay.com/learn-how-mapping-works-in-vuex
-
-//https://blog.logrocket.com/using-vuex-4-with-vue-3/
-//  https://vuex.vuejs.org/guide/state.html#getting-vuex-state-into-vue-components
 </script>
