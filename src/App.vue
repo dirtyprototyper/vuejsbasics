@@ -1,9 +1,12 @@
 <template>
+  <!--routing div. Remember to adjust it in index.js-->
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/signup">signup</router-link> |
-    <router-link to="/VueStore">vuestore </router-link>
+    <router-link to="/VueStore">vuestore </router-link> |
+
+    <router-link to="/Vuexmodule">module </router-link>
   </div>
   <router-view />
 </template>

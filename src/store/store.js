@@ -4,11 +4,42 @@
 // npm install vuex@next --save
 import Vuex from "vuex";
 
-/*things to test:
-1. Getters
-2. MApping
-3. Action
-*/
+//testing module
+const moduleA = {
+  //  make each module self-contained, we have to namespace it by setting the namespaced option to true
+  namespaced: true,
+  state: () => ({
+    number: 0,
+  }),
+  mutations: {
+    increase(state, payload) {
+      state.number += payload.amount;
+    },
+  },
+  actions: {
+    increase({ commit }, payload) {
+      commit("increase", payload);
+    },
+  },
+};
+
+const moduleB = {
+  namespaced: true,
+
+  state: () => ({
+    number: 1,
+  }),
+  mutations: {
+    increase(state, payload) {
+      state.number += payload.amount;
+    },
+  },
+  actions: {
+    increase({ commit }, payload) {
+      commit("increase", payload);
+    },
+  },
+};
 
 export const store = new Vuex.Store({
   //possible properties:
@@ -128,5 +159,11 @@ export const store = new Vuex.Store({
       //call the method and pass the item over.
       context.commit("addlocation", mylocation);
     },
+  },
+
+  //testing modules
+  modules: {
+    a: moduleA,
+    b: moduleB,
   },
 });

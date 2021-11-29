@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Form from "../views/form.vue";
 import Mydata from "../views/vuex.vue";
+import thevuexmodule from "../views/module.vue";
 
 //after creating the routes, remember to update app.vue js for the router-link
 const routes = [
@@ -29,6 +30,12 @@ const routes = [
     path: "/VueStore",
     name: "VueStore",
     component: Mydata,
+  },
+
+  {
+    path: "/Vuexmodule",
+    name: "Vuexmodule",
+    component: thevuexmodule,
   },
 ];
 

@@ -274,4 +274,8 @@ export default {
 
   // actions: {},
 };
+
+//https://vuex.vuejs.org/guide/modules.html#module-local-state
+
+//todo modules
 </script>
