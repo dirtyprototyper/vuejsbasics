@@ -130,7 +130,8 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-import { store } from "../../store/store.js";
+import { store } from "../../store/store";
+
 import { mapMutations } from "vuex";
 
 export default {
