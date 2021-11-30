@@ -145,7 +145,7 @@ export default {
   },
 
   computed: {
-    //for it to exist in datastore
+    //best way.  especially if datastore is in strict mode
     drinkitem: {
       get() {
         return store.state.drinkitem;

@@ -1,12 +1,13 @@
-// import vue from "vue";
+//https://vuex.vuejs.org/guide/structure.html
 
 //Using vue3 -> refer to vue4 documentation: https://next.vuex.vuejs.org/
 // npm install vuex@next --save
 import Vuex from "vuex";
-
+// import currencyModule from "./module/currencyModule";
+import currencyModule from "./module/currencyModule";
 //testing module
+
 const moduleA = {
-  //  make each module self-contained, we have to namespace it by setting the namespaced option to true
   namespaced: true,
   state: () => ({
     number: 0,
@@ -165,5 +166,10 @@ export const store = new Vuex.Store({
   modules: {
     a: moduleA,
     b: moduleB,
+    cm: currencyModule,
+    // cm: currencyModule,
+  },
+  mounted: {
+    moduleA,
   },
 });

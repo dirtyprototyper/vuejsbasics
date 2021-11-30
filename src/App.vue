@@ -5,8 +5,9 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/signup">signup</router-link> |
     <router-link to="/VueStore">vuestore </router-link> |
-
     <router-link to="/Vuexmodule">module </router-link>
+    <br />
+    <router-link to="/mytrading">Trading </router-link>
   </div>
   <router-view />
 </template>

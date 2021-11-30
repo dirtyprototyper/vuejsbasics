@@ -3,7 +3,7 @@ import Home from "../views/Home.vue";
 import Form from "../views/form.vue";
 import Mydata from "../views/vuex.vue";
 import thevuexmodule from "../views/module.vue";
-
+import mytrading from "../views/trading.vue";
 //after creating the routes, remember to update app.vue js for the router-link
 const routes = [
   {
@@ -36,6 +36,12 @@ const routes = [
     path: "/Vuexmodule",
     name: "Vuexmodule",
     component: thevuexmodule,
+  },
+
+  {
+    path: "/mytrading",
+    name: "mytrading",
+    component: mytrading,
   },
 ];
 
