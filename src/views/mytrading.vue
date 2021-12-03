@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Displaytheholding from "../components/currency/holding";
-import Displayrates from "../components/currency/rates";
+import Displaytheholding from "../components/mytrading/holding";
+import Displayrates from "../components/mytrading/rates";
 
 export default {
   name: "mytrading",

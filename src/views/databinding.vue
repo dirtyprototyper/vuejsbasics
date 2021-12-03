@@ -1,12 +1,15 @@
 <template>
   <div class="form">
-    <h2>Welcome to form.vue</h2>
+    <h2>Welcome to databinding view</h2>
 
     <div style="border: 1px solid black">
       <div>
         <div>The following will change after you press submit in formcomp</div>
-        user: {{ name }}, <br />
-        age: {{ age }}
+        <v-card style="border: 5px solid green">
+          <!-- When the form in formcomp is submitted, this will be adjusted acordingly-->
+          user: {{ name }}, <br />
+          age: {{ age }}
+        </v-card>
       </div>
 
       <!--both are valid event emitters -->
@@ -18,9 +21,11 @@
     </div>
     <br />
 
-    <div style="border: 1px solid red">
+    <div style="border: 3px solid yellow">
       <DisplaytheData msgs="form data" />
     </div>
+    <br />
+    <br />
   </div>
 
   <!--show that vuex / store data can be shown in another view-->
@@ -28,22 +33,28 @@
     If you go to vuestore and change the number, it will changes this as well.
     data is controlled in Vuex.Store at index.js
     <br />
-    the count number is:{{ count }}
+    <v-card style="border: 5px solid green">
+      the count number is:{{ count }}
+    </v-card>
   </div>
 
   <br />
-  <div>Testing Data store: {{ friend }}</div>
+  <div>
+    <v-card style="border: 5px solid green">
+      Testing Data store: {{ friend }}
+    </v-card>
+  </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 //Note! do not put curly braces for the component that you are importing
-import DisplaytheData from "../components/form/display.vue";
-import formcomps from "../components/form/formcomp.vue";
+import DisplaytheData from "../components/databinding/display.vue";
+import formcomps from "../components/databinding/formcomp.vue";
 import { store } from "../store/store.js";
 
 export default {
-  name: "Form",
+  name: "Databinding",
   data() {
     return {
       name: "",

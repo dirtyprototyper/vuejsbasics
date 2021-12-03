@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Form from "../views/form.vue";
-import Mydata from "../views/vuex.vue";
+import Databinding from "../views/databinding.vue";
+import Vueexperiements from "../views/Vueexperiements.vue";
 import thevuexmodule from "../views/module.vue";
-import mytrading from "../views/trading.vue";
+import mytrading from "../views/mytrading.vue";
 //after creating the routes, remember to update app.vue js for the router-link
 const routes = [
   {
@@ -21,15 +21,15 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path: "/signup",
-    name: "signup",
-    component: Form,
+    path: "/databinding",
+    name: "databinding",
+    component: Databinding,
   },
 
   {
-    path: "/VueStore",
-    name: "VueStore",
-    component: Mydata,
+    path: "/Vueexperiements",
+    name: "Vueexperiements",
+    component: Vueexperiements,
   },
 
   {

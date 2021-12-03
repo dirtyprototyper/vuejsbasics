@@ -2,13 +2,58 @@
 
 <template>
   <br />
+  <h1 style="margin-left: 1em">Module in datastore</h1>
+  <div style="border: 1px solid black; text-align: center">
+    <h1>Module A</h1>
+    <v-card
+      style="border: 5px solid green; margin-left: 1em; margin-right: 1em"
+    >
+      the number in module A {{ a.number }} <br />
+    </v-card>
+    <br />
+    <v-card style="border: 5px solid red; margin-left: 1em; margin-right: 1em">
+      <v-btn
+        style="
+          display: block;
+          margin-top: 1em;
+          margin-left: auto;
+          margin-right: auto;
+          width: 20%;
+        "
+        @click="increaseA({ amount: 10 })"
+        >Increase</v-btn
+      >
+    </v-card>
+    <br />
+  </div>
+  <br />
+  <br />
 
-  the number in module A {{ a.number }} <br />
-  <button @click="increaseA({ amount: 10 })">Increase</button>
-  <br />
-  <br />
-  the number in module b is {{ b.number }} <br />
-  <button @click="increaseB({ amount: 10 })">Increase</button>
+  <div style="border: 1px solid black; text-align: center">
+    <h1>Module B</h1>
+
+    <v-card
+      style="border: 5px solid green; margin-left: 1em; margin-right: 1em"
+    >
+      the number in module b is {{ b.number }} <br />
+    </v-card>
+    <br />
+    <v-card style="border: 5px solid red; margin-left: 1em; margin-right: 1em">
+      <v-btn
+        style="
+          display: block;
+          margin-top: 1em;
+          margin-left: auto;
+          margin-right: auto;
+          width: 20%;
+        "
+        @click="increaseB({ amount: 10 })"
+        >Increase</v-btn
+      >
+    </v-card>
+
+    <br />
+  </div>
 </template>
 
 <script>

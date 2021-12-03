@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>You chose ???</p>
+    <p>display the data not in use currently.</p>
   </div>
 </template>
 
