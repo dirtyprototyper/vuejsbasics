@@ -10,8 +10,8 @@
     {{ index }} :{{ item }}
   </li>
 
-  <button disabled @click="refresh">click to refresh</button>
-  <button @click="logging">click to log</button>
+  <v-btn disabled @click="refresh">click to refresh</v-btn>
+  <v-btn @click="logging">click to log</v-btn>
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
   methods: {
     logging() {
       //   console.log(this.wow.data);
-      store.commit("saverates", this.wow.data);
+      // store.commit("saverates", this.wow.data);
       //   console.log(this.wow.data.SGD);
       console.log(store.state.rates);
     },

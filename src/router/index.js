@@ -4,6 +4,8 @@ import Databinding from "../views/databinding.vue";
 import Vueexperiements from "../views/Vueexperiements.vue";
 import thevuexmodule from "../views/module.vue";
 import mytrading from "../views/mytrading.vue";
+import TheForm from "../views/form.vue";
+
 //after creating the routes, remember to update app.vue js for the router-link
 const routes = [
   {
@@ -42,6 +44,11 @@ const routes = [
     path: "/mytrading",
     name: "mytrading",
     component: mytrading,
+  },
+  {
+    path: "/form",
+    name: "form",
+    component: TheForm,
   },
 ];
 

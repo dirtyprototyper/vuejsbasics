@@ -6,9 +6,11 @@
         <router-link to="/about">About</router-link> |
         <router-link to="/databinding">databinding</router-link> |
         <router-link to="/Vueexperiements">Vueexperiements </router-link> |
-        <router-link to="/Vuexmodule">module </router-link>
+        <router-link to="/Vuexmodule">module </router-link> |
+        <router-link to="/form">form </router-link>
+
         <br />
-        <router-link to="/mytrading">Trading </router-link>
+        <router-link to="/mytrading">Trading </router-link> | <br />
       </div>
       <router-view />
     </v-main>

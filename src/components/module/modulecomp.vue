@@ -59,7 +59,7 @@
 <script>
 // import { mapActions } from "vuex";
 import { mapState } from "vuex";
-// import { store } from "../../store/store";
+import { store } from "../../store/store";
 // import { mapMutations } from "vuex";
 
 export default {
@@ -73,6 +73,9 @@ export default {
   },
   methods: {
     increaseA(payload) {
+      //this is how you get the state from that particular module you mapped to
+      console.log(store.state.a.number);
+
       // this.store.dispatch("a/increase", payload);
       this.$store.dispatch("a/increase", payload);
     },

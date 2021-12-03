@@ -5,6 +5,7 @@
 import Vuex from "vuex";
 // import currencyModule from "./module/currencyModule";
 import currencyModule from "./module/currencyModule";
+import formModule from "./module/formModule";
 //testing module
 
 const moduleA = {
@@ -167,9 +168,34 @@ export const store = new Vuex.Store({
     a: moduleA,
     b: moduleB,
     cm: currencyModule,
+    fm: formModule,
     // cm: currencyModule,
   },
   mounted: {
     moduleA,
   },
+  //https://blog.devgenius.io/vuex-4-dynamic-module-registration-and-logging-60db113a5bb3
+  // plugins: [
+  //   Vuex.createLogger({
+  //     collapsed: true,
+  //     // filter(mutation, stateBefore, stateAfter) {
+  //     //   return mutation.type !== "foo";
+  //     // },
+  //     // actionFilter(action, state) {
+  //     //   return action.type !== "foo";
+  //     // },
+  //     transformer(state) {
+  //       return state.subTree;
+  //     },
+  //     mutationTransformer(mutation) {
+  //       return mutation.type;
+  //     },
+  //     actionTransformer(action) {
+  //       return action.type;
+  //     },
+  //     logActions: true,
+  //     logMutations: true,
+  //     logger: console,
+  //   }),
+  // ],
 });
