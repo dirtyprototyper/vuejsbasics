@@ -1,3 +1,6 @@
+// Why use a data store
+//https://worldline.github.io/vuejs-training/state/#practical-work-implement-a-vuex-store
+
 //https://vuex.vuejs.org/guide/structure.html
 
 //Using vue3 -> refer to vue4 documentation: https://next.vuex.vuejs.org/
